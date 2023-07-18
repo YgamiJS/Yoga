@@ -1,0 +1,181 @@
+{
+  "month": "февраль",
+  "year": "2023",
+  "days": [
+    {
+      "number": 1,
+      "isWill": true,
+      "isOffline": true
+    },
+    {
+      "number": 2,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 3,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 4,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 5,
+      "isWill": true,
+      "isOffline": true
+    },
+    {
+      "number": 6,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 7,
+      "isWill": false,
+      "isOffline": false
+    },
+    {
+      "number": 8,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 9,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 10,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 11,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 12,
+      "isWill": true,
+      "isOffline": false
+    },
+    {
+      "number": 13,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 14,
+      "isWill": false,
+      "isOffline": false
+    },
+    {
+      "number": 15,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 16,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 17,
+      "isWill": true,
+      "isOffline": false
+    },
+    {
+      "number": 18,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 19,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 20,
+      "isWill": true,
+      "isOffline": false
+    },
+    {
+      "number": 21,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 22,
+      "isWill": true,
+      "isOffline": true
+    },
+    {
+      "number": 23,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 24,
+      "isWill": false,
+      "isOffline": false
+    },
+    {
+      "number": 25,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 26,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 27,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 28,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 29,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 30,
+      "isWill": true,
+      "isOffline": true
+    },
+    {
+      "number": 31,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 1,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 2,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 3,
+      "isWill": false,
+      "isOffline": true
+    },
+    {
+      "number": 4,
+      "isWill": false,
+      "isOffline": true
+    }
+  ]
+}

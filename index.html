@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="#" />
+    <link rel="icon" type="image/svg+xml" href="/images/background.webp" />
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no,initial-scale=1.0"
@@ -56,7 +56,9 @@
                   <a class="menu__link" href="#prices">стоймость</a>
                 </li>
                 <li class="menu__item">
-                  <a class="menu__link" href="#">записаться на занятие</a>
+                  <a class="menu__link" href="#signForLesson"
+                    >записаться на занятие</a
+                  >
                 </li>
               </ul>
             </nav>
@@ -78,7 +80,7 @@
       <main class="main">
         <section class="about" id="about">
           <div class="about__container container">
-            <img class="about__line" src="/images/line.webp" alt="Линия" />
+            <img class="about__line" src="/images/line.svg" alt="Линия" />
             <div class="about__text">
               <h2 class="about__h2">ОБО МНЕ</h2>
               <p class="about__p">
@@ -171,6 +173,40 @@
             </p>
           </div>
         </section>
+        <section class="reviews">
+          <div class="reviews__container container">
+            <h2 class="reviews__h2">что говорят обо мне люди</h2>
+            <div class="swiper reviews__swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide reviews__slide">Slide 1</div>
+                <div class="swiper-slide reviews__slide">Slide 2</div>
+                <div class="swiper-slide reviews__slide">Slide 3</div>
+              </div>
+              <div class="swiper-button-prev reviews__prev-btn"></div>
+              <div class="swiper-button-next reviews__next-btn"></div>
+            </div>
+            <div class="reviews__text">
+              <h3 class="reviews__h3">бесплатные продукты</h3>
+              <p class="reviews__p">
+                в любое удобное для вас время вы можете познакомиться со мной
+                через видео и аудио материалы. чтобы почувствовать откликается
+                ли вам мои методы преподавания, мой голос и энергия. так же
+                благодаря этим материалам вы сможете начать или продолжить
+                знакомство со своим телом и мыслями.
+              </p>
+              <div class="reviews__links">
+                <a class="reviews__link" href="https://t.me/your_olia_marley"
+                  >Перейти в телеграмм канал</a
+                >
+                <a
+                  class="reviews__link"
+                  href="https://youtube.com/@user-zo4it3jz8u?feature=sharea"
+                  >Перейти на youtube канал</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
         <section class="schedule" id="schedule">
           <div class="schedule__container container">
             <h2 class="schedule__h1">РАСПИСАНИЕ</h2>
@@ -183,33 +219,59 @@
               </div>
               <table class="table-schedule">
                 <thead class="table-schedule__thead">
-                  <tr class="table-schedule__tr">
+                  <tr class="table-schedule__tr table-schedule__tr-pc">
                     <th class="table-schedule__th">понедельник</th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      вторник
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      среда
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      четверг
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      пятница
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      суббота
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      воскресенье
+                    </th>
                   </tr>
-                  <tr class="table-schedule__tr">
-                    <th class="table-schedule__th">вторник</th>
-                  </tr>
-                  <tr class="table-schedule__tr">
-                    <th class="table-schedule__th">среда</th>
-                  </tr>
-                  <tr class="table-schedule__tr">
-                    <th class="table-schedule__th">четверг</th>
-                  </tr>
-                  <tr class="table-schedule__tr">
-                    <th class="table-schedule__th">пятница</th>
-                  </tr>
-                  <tr class="table-schedule__tr">
-                    <th class="table-schedule__th">суббота</th>
-                  </tr>
-                  <tr class="table-schedule__tr">
-                    <th class="table-schedule__th">воскресенье</th>
+                  <tr class="table-schedule__tr table-schedule__tr-mob">
+                    <th class="table-schedule__th">пон</th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      вт
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      ср
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      чт
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      пт
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      сб
+                    </th>
+                    <th class="table-schedule__th table-schedule__th_right">
+                      вс
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="table-schedule__tbody">
                   <tr class="table-schedule__tr-tbody">
                     <td class="table-schedule__td table-schedule__td_offline">
                       <span class="table-schedule__td-date">1</span>
-                      <p class="table-schedule__td-time">йога в группе 13:00</p>
+                      <p class="table-schedule__td-time">
+                        <span class="table-schedule__td-text">
+                          йога в группе
+                          <span class="table-schedule__td-at">13:00</span>
+                        </span>
+                      </p>
                     </td>
                     <td class="table-schedule__td">
                       <span class="table-schedule__td-date">2</span>
@@ -217,7 +279,10 @@
                     <td class="table-schedule__td table-schedule__td_online">
                       <span class="table-schedule__td-date">3</span>
                       <p class="table-schedule__td-time">
-                        онлайн занятие 14:00
+                        <span class="table-schedule__td-text">
+                          онлайн занятие
+                          <span class="table-schedule__td-at">14:00</span>
+                        </span>
                       </p>
                     </td>
                     <td class="table-schedule__td">
@@ -236,7 +301,12 @@
                   <tr class="table-schedule__tr-tbody">
                     <td class="table-schedule__td table-schedule__td_offline">
                       <span class="table-schedule__td-date">1</span>
-                      <p class="table-schedule__td-time">йога в группе 13:00</p>
+                      <p class="table-schedule__td-time">
+                        <span class="table-schedule__td-text">
+                          йога в группе
+                          <span class="table-schedule__td-at">13:00</span>
+                        </span>
+                      </p>
                     </td>
                     <td class="table-schedule__td">
                       <span class="table-schedule__td-date">2</span>
@@ -244,7 +314,10 @@
                     <td class="table-schedule__td table-schedule__td_online">
                       <span class="table-schedule__td-date">3</span>
                       <p class="table-schedule__td-time">
-                        онлайн занятие 14:00
+                        <span class="table-schedule__td-text">
+                          онлайн занятие
+                          <span class="table-schedule__td-at">14:00</span>
+                        </span>
                       </p>
                     </td>
                     <td class="table-schedule__td">
@@ -263,7 +336,14 @@
                   <tr class="table-schedule__tr-tbody">
                     <td class="table-schedule__td table-schedule__td_offline">
                       <span class="table-schedule__td-date">1</span>
-                      <p class="table-schedule__td-time">йога в группе 13:00</p>
+                      <p class="table-schedule__td-time">
+                        <span class="table-schedule__td-text">
+                          <span class="table-schedule__td-text">
+                            онлайн занятие
+                            <span class="table-schedule__td-at">14:00</span>
+                          </span>
+                        </span>
+                      </p>
                     </td>
                     <td class="table-schedule__td">
                       <span class="table-schedule__td-date">2</span>
@@ -271,7 +351,10 @@
                     <td class="table-schedule__td table-schedule__td_online">
                       <span class="table-schedule__td-date">3</span>
                       <p class="table-schedule__td-time">
-                        онлайн занятие 14:00
+                        <span class="table-schedule__td-text">
+                          онлайн занятие
+                          <span class="table-schedule__td-at">14:00</span>
+                        </span>
                       </p>
                     </td>
                     <td class="table-schedule__td">
@@ -290,7 +373,12 @@
                   <tr class="table-schedule__tr-tbody">
                     <td class="table-schedule__td table-schedule__td_offline">
                       <span class="table-schedule__td-date">1</span>
-                      <p class="table-schedule__td-time">йога в группе 13:00</p>
+                      <p class="table-schedule__td-time">
+                        <span class="table-schedule__td-text">
+                          йога в группе
+                          <span class="table-schedule__td-at">13:00</span>
+                        </span>
+                      </p>
                     </td>
                     <td class="table-schedule__td">
                       <span class="table-schedule__td-date">2</span>
@@ -298,7 +386,10 @@
                     <td class="table-schedule__td table-schedule__td_online">
                       <span class="table-schedule__td-date">3</span>
                       <p class="table-schedule__td-time">
-                        онлайн занятие 14:00
+                        <span class="table-schedule__td-text">
+                          онлайн занятие
+                          <span class="table-schedule__td-at">14:00</span>
+                        </span>
                       </p>
                     </td>
                     <td class="table-schedule__td">
@@ -317,7 +408,12 @@
                   <tr class="table-schedule__tr-tbody">
                     <td class="table-schedule__td table-schedule__td_offline">
                       <span class="table-schedule__td-date">1</span>
-                      <p class="table-schedule__td-time">йога в группе 13:00</p>
+                      <p class="table-schedule__td-time">
+                        <span class="table-schedule__td-text">
+                          йога в группе
+                          <span class="table-schedule__td-at">13:00</span>
+                        </span>
+                      </p>
                     </td>
                     <td class="table-schedule__td">
                       <span class="table-schedule__td-date">2</span>
@@ -325,7 +421,10 @@
                     <td class="table-schedule__td table-schedule__td_online">
                       <span class="table-schedule__td-date">3</span>
                       <p class="table-schedule__td-time">
-                        онлайн занятие 14:00
+                        <span class="table-schedule__td-text">
+                          онлайн занятие
+                          <span class="table-schedule__td-at">14:00</span>
+                        </span>
                       </p>
                     </td>
                     <td class="table-schedule__td">
@@ -344,7 +443,12 @@
                   <tr class="table-schedule__tr-tbody">
                     <td class="table-schedule__td table-schedule__td_offline">
                       <span class="table-schedule__td-date">1</span>
-                      <p class="table-schedule__td-time">йога в группе 13:00</p>
+                      <p class="table-schedule__td-time">
+                        <span class="table-schedule__td-text">
+                          йога в группе
+                          <span class="table-schedule__td-at">13:00</span>
+                        </span>
+                      </p>
                     </td>
                     <td class="table-schedule__td">
                       <span class="table-schedule__td-date">2</span>
@@ -352,7 +456,10 @@
                     <td class="table-schedule__td table-schedule__td_online">
                       <span class="table-schedule__td-date">3</span>
                       <p class="table-schedule__td-time">
-                        онлайн занятие 14:00
+                        <span class="table-schedule__td-text">
+                          онлайн занятие
+                          <span class="table-schedule__td-at">14:00</span>
+                        </span>
                       </p>
                     </td>
                     <td class="table-schedule__td">
@@ -370,6 +477,16 @@
                   </tr>
                 </tbody>
               </table>
+              <ul class="types-schedule">
+                <li class="types-schedule__type types-schedule__type-offline">
+                  <div class="types-schedule__color"></div>
+                  <span class="types-schedule__span">ЙОГА В ЗАЛЕ</span>
+                </li>
+                <li class="types-schedule__type types-schedule__type-online">
+                  <div class="types-schedule__color"></div>
+                  <span class="types-schedule__span">ОНЛАЙН ЗАНЯТИЙ</span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
@@ -584,7 +701,7 @@
             </ul>
           </div>
         </section>
-        <section class="signForLesson">
+        <section class="signForLesson" id="signForLesson">
           <div class="signForLesson__container container">
             <h2 class="singForLesson__h2">записаться на занятие</h2>
             <div class="signForLesson__description">
@@ -600,7 +717,7 @@
                     связаться со мной в телеграмм
                   </li>
                 </ul>
-                <a class="signForLesson__sing" href="#"
+                <a class="signForLesson__sing" href="https://t.me/olgamarley"
                   >записаться в телеграмм</a
                 >
               </div>
@@ -614,7 +731,84 @@
         </section>
       </main>
       <footer class="footer">
-        <div class="footer__container container"></div>
+        <div class="footer__container container">
+          <ul class="footer-links">
+            <ul class="footer-link-list">
+              <li class="footer-link-list__head">навигация по сайту</li>
+              <li class="footer-link-list__item">
+                <a class="footer-link-list__link" href="#about">обо мне</a>
+              </li>
+              <li class="footer-link-list__item">
+                <a class="footer-link-list__link" href="#schedule"
+                  >Расписание</a
+                >
+              </li>
+              <li class="footer-link-list__item">
+                <a class="footer-link-list__link" href="#details"
+                  >подробности о занятии</a
+                >
+              </li>
+              <li class="footer-link-list__item">
+                <a class="footer-link-list__link" href="#prices">стоймость</a>
+              </li>
+              <li class="footer-link-list__item">
+                <a class="footer-link-list__link" href="#signForLesson"
+                  >записаться на занятие</a
+                >
+              </li>
+            </ul>
+            <div class="footer-address">
+              <p class="footer-address__address">адрес</p>
+              <p class="footer-address__location">
+                ул. Горького, 26<br />
+                2 этаж<br />
+                студия 201<br />
+                (из лифта или лестницы сразу налево и до конца)
+              </p>
+            </div>
+            <ul class="footer-link-social-list">
+              <li class="footer-link-social-list__head">социальные сети</li>
+              <ul class="footer-link-social-list-links">
+                <li class="footer-link-social__item">
+                  <a
+                    class="footer-link-social__link"
+                    href="https://t.me/olgamarley"
+                  >
+                    <img
+                      class="footer-link-social__social-img"
+                      src="/images/telegram.svg"
+                      alt="Telegram"
+                    />
+                  </a>
+                </li>
+                <li class="footer-link-social__item">
+                  <a
+                    class="footer-link-social__link"
+                    href="https://youtube.com/@user-zo4it3jz8u?feature=sharea"
+                  >
+                    <img
+                      class="footer-link-social__social-img"
+                      src="/images/youtube.svg"
+                      alt="YouTube"
+                    />
+                  </a>
+                </li>
+                <li class="footer-link-social__item">
+                  <a
+                    class="footer-link-socialt__link"
+                    href="https://instagram.com/olga_marley_?igshid=MzRlODBiNWFlZA=="
+                  >
+                    <img
+                      class="footer-link-social__social-img"
+                      src="/images/instagram.svg"
+                      alt="Instagram"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </ul>
+          </ul>
+        </div>
       </footer>
     </div>
     <script type="module" src="./src/js/main.js"></script>

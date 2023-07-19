@@ -13,5 +13,8 @@
     "postcss": "^8.4.25",
     "vite": "^4.4.0",
     "vite-plugin-imagemin": "^0.6.1"
+  },
+  "dependencies": {
+    "swiper": "^9.4.1"
   }
 }

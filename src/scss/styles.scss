@@ -51,7 +51,6 @@ body {
   display: flex;
   font-family: "Romul", sans-serif;
   flex-direction: column;
-  overflow: hidden;
   width: 100%;
   min-height: 100vh;
 }
@@ -59,7 +58,7 @@ body {
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 24px;
 }
 
 .header {
@@ -215,7 +214,7 @@ body {
   background-color: $gray;
   background-position: center center;
   background-repeat: no-repeat;
-  padding: 40px 0 50px 0;
+  padding: 160px 0;
   min-height: 100svh;
 
   &__container {
@@ -235,11 +234,14 @@ body {
 
   &__text {
     text-align: center;
+    display: flex;
+    flex-direction: column;
   }
 
   &__h2 {
     color: $black;
     font-family: "Constantine";
+    margin-bottom: 50px;
     @include adaptiv-font(32, 24);
     font-style: normal;
     font-weight: 400;
@@ -254,6 +256,10 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
+    margin-bottom: 70px;
+    max-width: 1054px;
+    width: 100%;
+    align-self: center;
   }
 
   @media (max-width: 767px) {
@@ -421,11 +427,21 @@ body {
       }
     }
   }
+
+  @media (max-width: 330px) {
+    &__image {
+      &-first,
+      &-fourth {
+        max-width: 252px;
+      }
+    }
+  }
 }
 
 .about-yoga {
   background: $graphit;
   min-height: 100svh;
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -467,6 +483,14 @@ body {
   &__line {
     background: $grey;
     width: 2px;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 2px;
+      height: 105%;
+      background: $grey;
+    }
 
     @media (max-width: 1100px) {
       display: none;
@@ -514,14 +538,86 @@ body {
   }
 }
 
+.reviews {
+  padding: 160px 0;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__h2 {
+    text-align: left;
+    padding-left: 137px;
+  }
+
+  &__h2,
+  &__h3 {
+    color: $black;
+    font-family: "Constantine";
+    @include adaptiv-font(32, 24);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px;
+  }
+
+  &__p {
+    color: $graphit;
+    text-align: center;
+    font-family: "Romul";
+    @include adaptiv-font(20, 14);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 50px 0 56px 0;
+    text-align: center;
+    max-width: 1128px;
+    width: 100%;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  &__link {
+    color: $graphit;
+    text-align: center;
+    font-family: "Romul";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    border-radius: 100px;
+    background: linear-gradient(
+        216deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.1) 100%
+      ),
+      rgba(0, 0, 0, 0.2);
+    padding: 16px 24px;
+    display: inline-block;
+    backdrop-filter: blur(6px);
+  }
+
+  @media (max-width: 767px) {
+    &__h2 {
+      text-align: center;
+      padding-left: 0;
+    }
+
+    padding: 120px 0;
+  }
+}
+
 .schedule {
   background: $graphit;
   border-radius: 0 0 24px 24px;
   padding: 50px 0 80px 0;
   min-height: 100svh;
-
-  &__container {
-  }
 
   &__h1 {
     text-align: center;
@@ -538,9 +634,6 @@ body {
     }
   }
 
-  &__schedule {
-  }
-
   @media (max-width: 767px) {
     padding: 17px 0 52px 0;
   }
@@ -548,6 +641,7 @@ body {
 
 .schedule-header {
   display: flex;
+  gap: 24px;
   justify-content: space-between;
   padding: 24px;
 
@@ -575,19 +669,20 @@ body {
   @media (max-width: 767px) {
     padding: 24px 0;
   }
+
+  @media (max-width: 330px) {
+    flex-wrap: wrap;
+  }
 }
 
 .table-schedule {
-  &__thead {
-  }
-
-  &__tr {
-  }
+  border-collapse: collapse;
+  width: 100%;
 
   &__th {
     color: $spaceGrey;
-    text-align: right;
-    font-family: "Inter-Bold", sans-serif;
+    text-align: left;
+    font-family: "Inter-Regular", sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -598,32 +693,174 @@ body {
     @media (max-width: 767px) {
       text-align: center;
     }
+
+    &_right {
+      text-align: right;
+    }
   }
 
-  &__tbody {
-  }
-
-  &__tr-tbody {
+  &__td:nth-child(7n),
+  &__td:nth-child(7n + 6) {
+    background: $black10;
   }
 
   &__td {
-    &_offline {
+    border: 2px solid $spaceGray;
+    padding: 8px;
+    width: 172px;
+    height: 200px;
+    vertical-align: baseline;
+    &_offline .table-schedule__td-time {
+      background: $green;
     }
 
-    &_online {
+    &_online .table-schedule__td-time {
+      background: $yellow;
+    }
+
+    @media (max-width: 330px) {
+      padding: 0 1.2%;
     }
   }
 
   &__td-date {
+    display: block;
+    text-align: right;
+    color: $whiteSmoke20;
+    text-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.4);
+    font-family: "Inter-SemiBold";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    margin-bottom: 5px;
+    padding: 0 4px;
+
+    @media (max-width: 330px) {
+      text-align: center;
+      padding: 0;
+    }
   }
 
   &__td-time {
+    display: inline-flex;
+    align-items: center;
+    color: $white;
+    font-family: "Inter-Regular";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    min-width: 115px;
+    height: 132px;
+    width: 100%;
+    border-radius: 21px;
+    padding: 0 16px;
+    margin-top: 14px;
+  }
+
+  &__tr-mob {
+    display: none;
+  }
+
+  &__td-text {
+    max-width: 100px;
+  }
+
+  @media (max-width: 1100px) {
+    margin-bottom: 28px;
+
+    &__tr-pc {
+      display: none;
+    }
+
+    &__tr-mob {
+      display: table-row;
+    }
+
+    &__th_right {
+      text-align: center;
+    }
+
+    &__td {
+      max-width: 39px; //51
+      height: 100px;
+    }
+
+    &__td-text {
+      display: flex;
+      font-size: 0px;
+    }
+
+    &__td-time {
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 32px;
+      border-radius: 50px;
+      padding: 2px;
+      min-width: 0;
+    }
+
+    &__td-at {
+      @include adaptiv-font(20, 8);
+    }
+  }
+
+  @media (min-width: 710px) and (max-width: 1100px) {
+    &__td-time {
+      width: 42px !important;
+      height: 42px !important;
+    }
+  }
+}
+
+.types-schedule {
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+
+  &__type {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__type-offline &__color {
+    background: $green;
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 50%;
+  }
+
+  &__span {
+    color: $white;
+    text-align: center;
+    font-family: "Romul";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.32px;
+  }
+
+  &__type-online &__color {
+    background: $yellow;
+  }
+
+  @media (max-width: 1100px) {
+    display: flex;
   }
 }
 
 .details {
   background: $gray;
   min-height: 100svh;
+  padding-top: 160px;
   &__container {
     display: flex;
     flex-direction: column;
@@ -677,6 +914,7 @@ body {
   }
 
   @media (max-width: 1100px) {
+    padding: 120px 0;
     &__text {
       padding-bottom: 24px;
       justify-content: center;
@@ -729,6 +967,7 @@ body {
   background: $gray;
   border-top: 2px solid $graphit;
   border-bottom: 2px solid $graphit;
+  padding-top: 160px;
 
   &__container {
     display: flex;
@@ -795,7 +1034,7 @@ body {
   }
 
   @media (max-width: 1100px) {
-    border-bottom: none;
+    border: none;
 
     &__text {
       justify-content: center;
@@ -819,7 +1058,8 @@ body {
 
 .individualSessions {
   background: $gray;
-  padding-bottom: 61px;
+  padding: 160px 0;
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -871,6 +1111,7 @@ body {
   }
 
   @media (max-width: 1100px) {
+    padding: 120px 0;
     &__img {
       order: 1;
     }
@@ -1087,7 +1328,7 @@ body {
     text-align: center;
     color: $gray;
     font-family: "Constantine";
-    font-size: 32px;
+    @include adaptiv-font(32, 24);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1113,6 +1354,93 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 32px;
+  }
+}
+
+.footer {
+  background: $graphit;
+  padding-bottom: 64px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+
+  @media (max-width: 767px) {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.footer-link-list {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__head {
+    color: $white;
+    font-family: "Constantine";
+    @include adaptiv-font(16, 24);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 16px;
+  }
+
+  &__item {
+    color: $white;
+    font-family: "Romul";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+.footer-address {
+  display: inline-block;
+  &__address {
+    text-align: center;
+    color: $white;
+    font-family: "Constantine";
+    @include adaptiv-font(16, 24);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 16px;
+  }
+
+  &__location {
+    color: $white;
+    font-family: "Romul";
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+}
+.footer-link-social-list {
+  &__head {
+    color: $white;
+    font-family: "Constantine";
+    @include adaptiv-font(16, 24);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 16px;
+  }
+
+  &-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  &__social-img {
+    width: 32px;
+    height: 32px;
   }
 }
 

@@ -1,5 +1,6 @@
 $white: #ffffff;
 $black: #000000;
+$black10: #00000024;
 $whiteSmoke: #faf9f9;
 $gray: #eeede9;
 $grey: #c9c9c9;
@@ -7,6 +8,10 @@ $smoke: #f8f7fa;
 $space: #dde0ff1f;
 $graphit: #262627;
 $spaceGrey: #f8f7faa3;
+$spaceGray: #3a3943;
+$whiteSmoke20: #f8f7fa;
+$green: #0dee4c3d;
+$yellow: #564e03;
 $maxWidth: 1280;
 
 @mixin adaptiv-font($pcSize, $mobSize) {

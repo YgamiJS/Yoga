@@ -1,25 +1,71 @@
-import Swiper, { Navigation } from "swiper";
 import schedule from "@/data/schedule.json";
 import "swiper/swiper-bundle.css";
 import "@/scss/index.scss";
 
+const overlay = document.querySelector(".overlay");
+const Headerburger = document.querySelector(".header__burger");
+const OverlayBurger = document.querySelector(".overlay__burger");
+const OverlayMenu = document.querySelector(".overlay__menu");
 const tableBody = document.querySelector(".table-schedule__tbody");
 const mounth = document.querySelector(".schedule-header__mounth");
 const year = document.querySelector(".schedule-header__year");
+const body = document.body;
 
-new Swiper(".reviews__swiper", {
-  loop: true,
-  navigation: {
-    nextEl: ".reviews__next-btn",
-    prevEl: ".reviews__prev-btn",
-  },
-  modules: [Navigation],
-  on: {
-    slideChange: () => {
-      const index_currentSlide = this.realIndex;
-      const currentSlide = this.slides[index_currentSlide];
-    },
-  },
+Headerburger.addEventListener("click", () => {
+  overlay.classList.toggle("active");
+  body.classList.toggle("scroll-hidden");
+  overlay.classList.remove("closing");
+});
+
+OverlayBurger.addEventListener("click", () => {
+  overlay.classList.toggle("active");
+  overlay.classList.toggle("closing");
+  body.classList.toggle("scroll-hidden");
+});
+
+OverlayMenu.addEventListener("click", () => {
+  overlay.classList.toggle("active");
+  body.classList.toggle("scroll-hidden");
+  overlay.classList.toggle("closing");
+});
+
+const slider = document.querySelector(".slider");
+
+// Desktop
+const notActiveAuthors = document.querySelectorAll(
+  ".authors-list__item:not(.active)"
+);
+
+notActiveAuthors.forEach((item) => {
+  item.addEventListener("click", () => {
+    const scrollTarget = item.dataset.scrollTarget;
+
+    const sliderTarget = document.querySelector(
+      `[data-target="${scrollTarget}"`
+    );
+
+    sliderTarget.scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+//Mobile
+const buttonsNavigate = document.querySelectorAll(".authors-list__actions-btn");
+const allItemsLength = document.querySelectorAll(".slider__item").length;
+
+buttonsNavigate.forEach((button) => {
+  button.addEventListener("click", () => {
+    const scrollPercent = Math.floor(slider.scrollWidth / allItemsLength);
+
+    if (button.classList.contains("right")) {
+      // right button
+      slider.scrollBy(scrollPercent, 0);
+    } else if (button.classList.contains("left")) {
+      // left button
+      const previousPosition = slider.scrollLeft - scrollPercent;
+
+      slider.scrollTo(previousPosition, 0);
+    }
+  });
 });
 
 mounth.textContent = schedule.month;

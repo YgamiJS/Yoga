@@ -29,6 +29,11 @@
 }
 
 @font-face {
+  font-family: "Archive";
+  src: url("/fonts/Archive.woff2") format("woff2");
+}
+
+@font-face {
   font-family: "Romul";
   src: url("/fonts/Romul.ttf");
 }
@@ -45,6 +50,10 @@ ol {
 
 body {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  &.scroll-hidden {
+    overflow: hidden;
+  }
 }
 
 .wrapper {
@@ -61,6 +70,76 @@ body {
   padding: 0 24px;
 }
 
+.overlay {
+  background: $graphit;
+  animation-name: transform;
+  animation-timing-function: linear;
+  animation-duration: 300ms;
+  animation-play-state: paused;
+  z-index: 3;
+  position: fixed;
+  left: 100%;
+  display: none;
+  padding-top: 50px;
+  width: 100vw;
+  height: 100vh;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .burger {
+    display: flex;
+    align-self: flex-end;
+    width: 100%;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    &__line {
+      background: $white;
+      height: 3px;
+    }
+
+    &__line:first-child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &__line:last-child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    margin-bottom: 40px;
+  }
+
+  .menu {
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+  }
+
+  @media (max-width: 1100px) {
+    &.active {
+      display: block;
+      left: 0%;
+      animation-play-state: running;
+      animation-name: transform;
+    }
+
+    &.closing {
+      animation-name: transformClosing;
+      display: block;
+      left: 100%;
+      animation-play-state: running;
+    }
+  }
+}
+
 .header {
   background: url("/images/background.webp") no-repeat;
   background-position: center center;
@@ -69,6 +148,7 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100svh;
+
   &__container {
     display: flex;
     width: 100%;
@@ -87,7 +167,7 @@ body {
   &__bottom {
     align-items: center;
     display: flex;
-    height: 70vh;
+    height: 100svh;
   }
 
   &__nav {
@@ -131,10 +211,11 @@ body {
 
   &__link {
     background: linear-gradient(
-      216deg,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.1) 100%
-    );
+        216deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.1) 100%
+      ),
+      rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(6px);
     border-radius: 100px;
     padding: 16px 24px;
@@ -145,10 +226,6 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
-
-    @media (max-width: 767px) {
-      background: rgba(0, 0, 0, 0.2);
-    }
   }
 
   @media (max-width: 767px) {
@@ -162,6 +239,7 @@ body {
 
     .burger {
       display: flex;
+      margin-top: 10px;
     }
 
     &__nav {
@@ -175,6 +253,26 @@ body {
     .menu {
       flex-direction: column;
     }
+  }
+}
+
+@keyframes transform {
+  0% {
+    left: 100%;
+  }
+
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes transformClosing {
+  0% {
+    left: 0%;
+  }
+
+  100% {
+    left: 100%;
   }
 }
 
@@ -211,7 +309,7 @@ body {
 }
 
 .about {
-  background-color: $gray;
+  background-color: $white;
   background-position: center center;
   background-repeat: no-repeat;
   padding: 160px 0;
@@ -241,7 +339,7 @@ body {
   &__h2 {
     color: $black;
     font-family: "Constantine";
-    margin-bottom: 50px;
+    margin-bottom: 32px;
     @include adaptiv-font(32, 24);
     font-style: normal;
     font-weight: 400;
@@ -251,12 +349,12 @@ body {
   &__p {
     color: $black;
     text-align: center;
-    font-family: "Romul";
+    font-family: "Archive";
     @include adaptiv-font(16, 14);
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
-    margin-bottom: 70px;
+    margin-bottom: 38px;
     max-width: 1054px;
     width: 100%;
     align-self: center;
@@ -276,20 +374,20 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 61px 0px;
-  margin: 30px 0;
+  margin: 32px 0;
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 
   &__image {
     &-first {
       display: flex;
       flex-direction: column;
-      max-width: 338px;
-      .images__img {
-        align-self: flex-start;
-      }
-      .images__p {
-        margin-top: 22px;
-        align-self: flex-end;
-      }
+      max-width: 360px;
+      max-height: 430px;
     }
 
     &-second {
@@ -297,15 +395,8 @@ body {
       flex-direction: column;
       place-self: auto end;
       align-items: center;
-      max-width: 410px;
-      width: 100%;
-      .images__img {
-        align-self: flex-end;
-      }
-      .images__p {
-        margin-top: 22px;
-        align-self: flex-start;
-      }
+      max-width: 250px;
+      max-height: 300px;
     }
 
     &-third {
@@ -313,16 +404,8 @@ body {
       flex-direction: column;
       place-self: center;
       align-items: center;
-      max-width: 302px;
-      width: 100%;
-      .images__img {
-        align-self: flex-start;
-      }
-      .images__p {
-        margin-top: 22px;
-        align-self: flex-end;
-        text-align: right;
-      }
+      max-width: 280px;
+      max-height: 335px;
     }
 
     &-fourth {
@@ -330,13 +413,8 @@ body {
       flex-direction: column;
       place-self: center;
       align-items: center;
-      max-width: 300px;
-      width: 100%;
-      .images__p {
-        margin-top: 22px;
-        padding: 0 60px 10px 0px;
-        text-align: start;
-      }
+      max-width: 365px;
+      max-height: 485px;
     }
   }
 
@@ -352,7 +430,9 @@ body {
   }
 
   @media (max-width: 767px) {
-    grid-template-columns: repeat(1, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
     place-items: center;
 
     &__image {
@@ -360,52 +440,43 @@ body {
         display: flex;
         flex-direction: column;
         max-width: 338px;
+        order: 1;
         .images__img {
           max-width: 300px;
           width: 100%;
           align-self: flex-start;
         }
-        .images__p {
-          margin-top: 22px;
-          align-self: flex-end;
-        }
       }
       &-second {
         display: flex;
         flex-direction: column;
+        order: 3;
         place-self: center;
         align-items: center;
         max-width: 219px;
         width: 100%;
-        .images__img {
-          align-self: flex-end;
-          order: 1;
-        }
-        .images__p {
-          margin-top: 22px;
-          align-self: flex-start;
-          order: 2;
-        }
+        margin-top: 137px;
       }
 
       &-third {
         display: flex;
         flex-direction: column;
+        margin-top: 157px;
+        order: 2;
         place-self: center;
         align-items: center;
         max-width: 252px;
         width: 100%;
         .images__img {
-          align-self: flex-start;
-        }
-        .images__p {
-          margin-top: 22px;
+          max-width: 218px;
+          width: 100%;
           align-self: flex-end;
-          text-align: right;
         }
       }
 
       &-fourth {
+        margin-top: 138px;
+        order: 4;
         display: flex;
         flex-direction: column;
         place-self: center;
@@ -416,13 +487,6 @@ body {
           order: 1;
           max-width: 300px;
           width: 100%;
-        }
-
-        .images__p {
-          margin-top: 22px;
-          padding: 0 60px 10px 0px;
-          text-align: start;
-          order: 2;
         }
       }
     }
@@ -440,11 +504,12 @@ body {
 
 .about-yoga {
   background: $graphit;
-  min-height: 100svh;
+  padding-bottom: 169px;
 
   &__container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   &__h1 {
@@ -453,7 +518,7 @@ body {
     font-family: "Constantine";
     text-align: center;
     @include adaptiv-font(32, 24);
-    padding: 40px 0 50px 0;
+    padding: 40px 0 91px 0;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -462,67 +527,42 @@ body {
   &__text {
     display: flex;
     justify-content: space-between;
+    gap: 24px;
+    align-items: center;
     flex-wrap: wrap;
-  }
-
-  &__text-description {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    gap: 56px;
   }
 
   &__img {
-    max-width: 470px;
-    max-width: 550px;
+    object-fit: cover;
+    max-width: 556px;
+    max-height: 598px;
     width: 100%;
     height: 100%;
   }
 
-  &__line {
-    background: $grey;
-    width: 2px;
-
-    &::after {
-      content: "";
-      display: block;
-      width: 2px;
-      height: 105%;
-      background: $grey;
-    }
-
-    @media (max-width: 1100px) {
-      display: none;
-    }
-  }
-
   &__p {
+    text-align: center;
     color: $gray;
-    font-family: "Romul";
+    font-family: "Archive";
     @include adaptiv-font(16, 14);
-    max-width: 515px;
+    max-width: 513px;
     width: 100%;
     font-style: normal;
     font-weight: 400;
     line-height: 26px;
   }
 
-  &__description {
-    align-self: center;
-    padding: 61px 0 53px 0;
-    max-width: 406px;
-    width: 100%;
-    color: $grey;
-    text-align: center;
-    font-family: "Romul";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
+  &__text-description {
+    border-radius: 24px;
+    border: 2px solid $gray;
+    display: flex;
+    padding: 24px 12px;
+    flex-direction: column;
+    gap: 56px;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1170px) {
+    padding-bottom: 24px;
     &__h1 {
       padding: 24px 0;
     }
@@ -532,8 +572,7 @@ body {
     }
 
     &__text-description {
-      padding: 24px 0;
-      border-bottom: 2px solid $grey;
+      gap: 16px;
     }
   }
 }
@@ -541,16 +580,121 @@ body {
 .reviews {
   padding: 160px 0;
 
+  &__container {
+    padding: 0 12px;
+  }
+
+  &__review {
+    color: $graphit;
+    align-self: center;
+    font-family: "Archive";
+    @include adaptiv-font(20, 14);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    height: 500px;
+
+    span:not(:last-child) {
+      display: block;
+      margin-bottom: 40px;
+      word-break: break-all;
+    }
+
+    &::before {
+      content: url("/images/quotes.svg");
+      float: left;
+      margin-right: 32px;
+      width: 51px;
+      height: 100%;
+    }
+
+    @media (max-width: 767px) {
+      height: 700px;
+      span:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__swiper {
+    max-width: 763px;
+    margin-bottom: 160px;
+    width: 100%;
+  }
+
+  &__prev-btn {
+    left: 0%;
+    transform: translate(-0%, -100%) !important;
+  }
+
+  &__next-btn {
+    left: 100%;
+    transform: translate(-100%, -100%) !important;
+  }
+
+  &__prev-btn,
+  &__next-btn {
+    color: $graphit;
+    z-index: 6;
+    top: 100%;
+    transform: translateY(-100%);
+    @media (min-width: 767px) {
+      display: none;
+    }
+  }
+
+  &__slide {
+    display: flex;
+    flex-direction: column;
+
+    .reviews-users {
+      margin-top: 24px;
+      justify-content: center;
+
+      @media (max-width: 767px) {
+        &__user {
+          display: none;
+
+          &.active {
+            display: flex;
+          }
+        }
+      }
+
+      @media (min-width: 767px) {
+        margin: 40px 0 0 83px;
+      }
+    }
+  }
+
   &__text {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
+  &__h2 {
+    text-align: left;
+    padding-left: 308px;
+    margin: 32px;
+    @media (max-width: 321px) {
+      display: none;
+    }
+  }
+
+  &__h3 {
+    margin-top: 202px;
+
+    @media (max-width: 767px) {
+      margin-top: 120px;
+    }
+  }
+
+  &__h2,
   &__h3 {
     color: $black;
     font-family: "Constantine";
-    @include adaptiv-font(32, 24);
+    @include adaptiv-font(32, 22);
     font-style: normal;
     font-weight: 400;
     line-height: 48px;
@@ -559,7 +703,7 @@ body {
   &__p {
     color: $graphit;
     text-align: center;
-    font-family: "Romul";
+    font-family: "Archive";
     @include adaptiv-font(20, 14);
     font-style: normal;
     font-weight: 400;
@@ -597,13 +741,214 @@ body {
     backdrop-filter: blur(6px);
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 920px) {
     &__h2 {
       text-align: center;
       padding-left: 0;
     }
 
     padding: 120px 0;
+  }
+}
+
+/**/
+
+.slider {
+  @media (max-width: 321px) {
+    display: none;
+  }
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  gap: 48px;
+  overflow: hidden;
+  width: 780px;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+}
+
+.slider__item {
+  min-width: 760px;
+  scroll-snap-align: center;
+}
+
+.slider__item-quotes {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slider__item-quotes img {
+  width: 52px;
+  height: auto;
+}
+
+.slider__item-wrapper {
+  position: relative;
+  padding-left: 84px;
+}
+
+.slider__item-text {
+  max-width: 680px;
+  font-size: 20px;
+  line-height: 32px;
+  margin-bottom: 30px;
+  font-family: "Archive", sans-serif;
+}
+
+.slider__item-text.new-line {
+  margin-bottom: 0;
+}
+
+.slider__item-text q {
+  quotes: "«" "»";
+}
+
+.slider__item .authors-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 4px;
+  position: relative;
+}
+
+.slider__item .authors-list__actions {
+  display: none;
+}
+
+.slider__item .authors-list__item {
+  cursor: pointer;
+}
+
+.slider__item .authors-list__item-avatar {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+
+.slider__item .authors-list__item.active {
+  background-color: #262627;
+  border-radius: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 24px;
+  padding: 16px 24px;
+  cursor: default;
+}
+
+.slider__item .authors-list__item.active .authors-list__item-info h5 {
+  font-family: "Romul";
+  white-space: nowrap;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.slider__item .authors-list__item.active .authors-list__item-info h6 {
+  font-family: "Romul";
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #999999;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 992px) {
+  .slider {
+    gap: 32px;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slider {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .slider__item {
+    min-width: 100%;
+  }
+  .slider__item-text {
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+  .slider__item .authors-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .slider__item .authors-list__actions {
+    display: block;
+    height: 45px;
+  }
+  .slider__item .authors-list__actions-btn {
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+  .slider__item .authors-list__actions-btn img {
+    display: block;
+  }
+  .slider__item .authors-list__item:not(.active) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .slider__item-wrapper {
+    position: relative;
+    padding-left: 44px;
+  }
+  .slider__item-quotes img {
+    width: 25px;
+  }
+  .slider__item .authors-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 2px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .slider__item .authors-list__actions {
+    display: block;
+  }
+  .slider__item .authors-list__actions-btn img {
+    width: 45px;
+  }
+  .slider__item .authors-list__item-avatar {
+    width: 52px;
+    height: 52px;
+  }
+  .slider__item .authors-list__item.active {
+    gap: 8px;
+    padding: 8px 16px;
+  }
+  .slider__item .authors-list__item.active .authors-list__item-info h5 {
+    font-size: 14px;
+  }
+  .slider__item .authors-list__item.active .authors-list__item-info h6 {
+    font-size: 10px;
   }
 }
 
@@ -629,6 +974,7 @@ body {
   }
 
   @media (max-width: 767px) {
+    min-height: 0;
     padding: 17px 0 52px 0;
   }
 }
@@ -644,6 +990,7 @@ body {
   }
 
   &__mounth {
+    font-family: "Constantine";
     color: $smoke;
     font-style: normal;
     font-weight: 700;
@@ -676,7 +1023,7 @@ body {
   &__th {
     color: $spaceGrey;
     text-align: left;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Archive", sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -690,6 +1037,7 @@ body {
 
     &_right {
       text-align: right;
+      padding-right: 16px;
     }
   }
 
@@ -705,11 +1053,11 @@ body {
     height: 200px;
     vertical-align: baseline;
     &_offline .table-schedule__td-time {
-      background: $green;
+      background: $white;
     }
 
     &_online .table-schedule__td-time {
-      background: $yellow;
+      background: $space;
     }
 
     @media (max-width: 330px) {
@@ -759,6 +1107,7 @@ body {
 
   &__td-text {
     max-width: 100px;
+    color: $black;
   }
 
   @media (max-width: 1100px) {
@@ -774,10 +1123,11 @@ body {
 
     &__th_right {
       text-align: center;
+      padding: 0;
     }
 
     &__td {
-      max-width: 39px; //51
+      max-width: 39px;
       height: 100px;
     }
 
@@ -798,6 +1148,10 @@ body {
 
     &__td-at {
       @include adaptiv-font(20, 8);
+    }
+
+    &__td-date {
+      padding: 0;
     }
   }
 
@@ -821,7 +1175,7 @@ body {
   }
 
   &__type-offline &__color {
-    background: $green;
+    background: $white;
   }
 
   &__color {
@@ -843,7 +1197,7 @@ body {
   }
 
   &__type-online &__color {
-    background: $yellow;
+    background: $space;
   }
 
   @media (max-width: 1100px) {
@@ -852,9 +1206,9 @@ body {
 }
 
 .details {
-  background: $gray;
-  min-height: 100svh;
+  background: $white;
   padding-top: 160px;
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -862,7 +1216,6 @@ body {
 
   &__h1 {
     text-align: center;
-    padding: 40px 0 50px 0;
     color: $graphit;
     font-family: "Constantine";
     @include adaptiv-font(32, 24);
@@ -873,23 +1226,28 @@ body {
 
   &__text {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 24px;
     flex-wrap: wrap;
   }
 
   &__text-description {
+    margin: 32px 0;
+    padding: 24px 12px;
     display: flex;
+    border-radius: 24px;
+    border: 2px solid $graphit;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
-    max-width: 514px;
+    max-width: 1104px;
     width: 100%;
   }
 
   &__p {
+    text-align: center;
     color: $graphit;
-    font-family: "Romul";
+    font-family: "Archive";
     font-size: 16px;
     @include adaptiv-font(16, 14);
     font-style: normal;
@@ -897,25 +1255,15 @@ body {
     @include adaptiv-lineHeight(32, 26);
   }
 
-  &__line {
-    background: $graphit;
-    width: 2px;
-  }
-
-  &__img {
-    max-width: 514px;
-    width: 100%;
-  }
-
   @media (max-width: 1100px) {
     padding: 120px 0;
     &__text {
       padding-bottom: 24px;
       justify-content: center;
-      border-bottom: 2px solid $graphit;
     }
 
     &__text-description {
+      gap: 12px;
       order: 2;
     }
 
@@ -930,7 +1278,6 @@ body {
 }
 
 .address {
-  margin: 20px 0 40px 0;
   text-align: center;
   align-self: center;
   max-width: 514px;
@@ -941,6 +1288,7 @@ body {
     text-align: center;
     font-family: "Constantine";
     @include adaptiv-font(24, 20);
+    margin-bottom: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -958,21 +1306,19 @@ body {
 }
 
 .information {
-  background: $gray;
-  border-top: 2px solid $graphit;
-  border-bottom: 2px solid $graphit;
-  padding-top: 160px;
+  background: $white;
+  padding-top: 156px;
 
   &__container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-items: center;
     height: 100%;
   }
 
   &__h2 {
     color: $graphit;
-    padding: 40px 0 50px 0;
     text-align: center;
     font-family: "Constantine";
     @include adaptiv-font(32, 24);
@@ -983,65 +1329,41 @@ body {
 
   &__text {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 24px;
     flex-wrap: wrap;
-    margin-bottom: 43px;
+    margin: 23px 0 43px 0;
   }
 
   &__text-description {
     display: flex;
     flex-direction: column;
+    border-radius: 24px;
+    border: 2px solid $graphit;
+    padding: 24px 12px;
     flex-wrap: wrap;
-    max-width: 513px;
+    max-width: 1104px;
     width: 100%;
     gap: 20px;
   }
 
   &__p {
+    text-align: center;
     color: $graphit;
-    font-family: "Romul";
+    font-family: "Archive";
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 26px;
   }
 
-  &__line {
-    background: $graphit;
-    width: 2px;
-
-    &::after {
-      content: "";
-      display: block;
-      width: 2px;
-      height: 112%;
-      background: $graphit;
-    }
-  }
-
-  &__img {
-    max-width: 513px;
-    max-height: 366px;
-    width: 100%;
-    height: 100%;
-  }
-
   @media (max-width: 1100px) {
+    padding-top: 120px;
     border: none;
 
     &__text {
       justify-content: center;
       padding-bottom: 16px;
-      border-bottom: 2px solid $graphit;
-    }
-
-    &__img {
-      order: 1;
-    }
-
-    &__text-description {
-      order: 2;
     }
 
     &__line {
@@ -1051,7 +1373,7 @@ body {
 }
 
 .individualSessions {
-  background: $gray;
+  background: $white;
   padding: 160px 0;
 
   &__container {
@@ -1060,7 +1382,6 @@ body {
   }
 
   &__h2 {
-    padding: 40px 0 50px 0;
     text-align: center;
     color: $graphit;
     font-family: "Constantine";
@@ -1072,47 +1393,36 @@ body {
 
   &__text {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
-
-    @media (max-width: 1100px) {
-      justify-content: center;
-    }
   }
 
   &__text-description {
+    margin-top: 32px;
     display: flex;
     flex-direction: column;
+    border-radius: 24px;
+    border: 2px solid $graphit;
     flex-wrap: wrap;
-    max-width: 661px;
+    max-width: 1104px;
+    padding: 24px 12px;
     width: 100%;
-    gap: 40px;
+    gap: 24x;
   }
 
   &__p {
+    text-align: center;
     color: $graphit;
-    font-family: "Romul";
+    font-family: "Archive";
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 32px;
   }
 
-  &__img {
-    max-width: 417px;
-    width: 100%;
-  }
-
   @media (max-width: 1100px) {
     padding: 120px 0;
-    &__img {
-      order: 1;
-    }
-
-    &__text-description {
-      order: 2;
-    }
   }
 }
 
@@ -1275,26 +1585,14 @@ body {
   &__container {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   &__description {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
-    @media (max-width: 1100px) {
-      justify-content: center;
-    }
-  }
-
-  &__question {
-    margin-bottom: 36px;
-    color: $gray;
-    font-family: "Romul";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 32px;
   }
 
   &__sing {
@@ -1329,11 +1627,10 @@ body {
     margin-bottom: 30px;
   }
 
-  &__img {
-    max-width: 387px;
-    max-height: 480px;
-    width: 100%;
-    height: 100%;
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -1342,8 +1639,9 @@ body {
   list-style-type: disc;
   padding-left: 25px;
   &__answer {
+    text-align: center;
     color: $gray;
-    font-family: "Romul";
+    font-family: "Archive";
     font-size: 16px;
     font-style: normal;
     font-weight: 400;

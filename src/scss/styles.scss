@@ -317,6 +317,10 @@ body {
 
   &__container {
     position: relative;
+    background-position: center center;
+    background-size: cover;
+    background-size: 100% 1731px;
+    background-repeat: no-repeat;
   }
 
   &__line {
@@ -361,7 +365,9 @@ body {
   }
 
   @media (max-width: 767px) {
-    background-image: url("/images/mob-line.svg");
+    &__container {
+      background-image: url("/images/mob-line.svg");
+    }
     padding: 120px 0;
 
     &__line {

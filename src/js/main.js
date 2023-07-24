@@ -11,6 +11,16 @@ const mounth = document.querySelector(".schedule-header__mounth");
 const year = document.querySelector(".schedule-header__year");
 const body = document.body;
 
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+});
+
 Headerburger.addEventListener("click", () => {
   overlay.classList.toggle("active");
   body.classList.toggle("scroll-hidden");

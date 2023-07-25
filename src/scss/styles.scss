@@ -70,6 +70,27 @@ body {
   padding: 0 24px;
 }
 
+.goToTop {
+  background: $spaceGray;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 95%;
+  left: 95%;
+  transform: translate(-95%, -95%);
+  z-index: 99;
+  @media (max-width: 1100px) {
+    &.active {
+      display: flex;
+    }
+  }
+}
+
 .overlay {
   background: $graphit;
   animation-name: transform;
@@ -147,7 +168,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 100svh;
+  min-height: 100vh;
 
   &__container {
     display: flex;
@@ -167,7 +188,7 @@ body {
   &__bottom {
     align-items: center;
     display: flex;
-    height: 100svh;
+    height: 100vh;
   }
 
   &__nav {
@@ -313,7 +334,7 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
   padding: 160px 0;
-  min-height: 100svh;
+  min-height: 100vh;
 
   &__container {
     position: relative;
@@ -384,6 +405,7 @@ body {
 
   &__img {
     object-fit: cover;
+    border: 1px solid $black;
     width: 100%;
     height: 100%;
   }
@@ -412,6 +434,9 @@ body {
       align-items: center;
       max-width: 280px;
       max-height: 335px;
+      .images__img {
+        border: none;
+      }
     }
 
     &-fourth {
@@ -477,6 +502,7 @@ body {
           max-width: 218px;
           width: 100%;
           align-self: flex-end;
+          border: none;
         }
       }
 
@@ -962,7 +988,7 @@ body {
   background: $graphit;
   border-radius: 0 0 24px 24px;
   padding: 50px 0 80px 0;
-  min-height: 100svh;
+  min-height: 100vh;
 
   &__h1 {
     text-align: center;
@@ -1064,6 +1090,10 @@ body {
 
     &_online .table-schedule__td-time {
       background: $space;
+    }
+
+    @media (max-width: 457px) and (min-width: 330px) {
+      padding: 6px;
     }
 
     @media (max-width: 330px) {
@@ -1435,7 +1465,7 @@ body {
 .Sessions-prices {
   background: $graphit;
   padding: 47px 0 19px 0;
-  min-height: 100svh;
+  min-height: 100vh;
   &__container {
     display: flex;
     flex-direction: column;

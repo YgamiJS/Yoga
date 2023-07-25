@@ -9,6 +9,8 @@ const OverlayMenu = document.querySelector(".overlay__menu");
 const tableBody = document.querySelector(".table-schedule__tbody");
 const mounth = document.querySelector(".schedule-header__mounth");
 const year = document.querySelector(".schedule-header__year");
+const wrapper = document.querySelector(".wrapper");
+const goToTop = document.querySelector(".goToTop");
 const body = document.body;
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -18,6 +20,19 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     document.querySelector(this.getAttribute("href")).scrollIntoView({
       behavior: "smooth",
     });
+  });
+});
+
+document.addEventListener("scroll", () => {
+  scrollY > 500
+    ? goToTop.classList.add("active")
+    : goToTop.classList.remove("active");
+});
+
+goToTop.addEventListener("click", (event) => {
+  event.preventDefault();
+  wrapper.scrollIntoView({
+    behavior: "smooth",
   });
 });
 
@@ -54,7 +69,7 @@ notActiveAuthors.forEach((item) => {
       `[data-target="${scrollTarget}"`
     );
 
-    sliderTarget.scrollIntoView({ behavior: "smooth" });
+    sliderTarget.scrollIntoView({ block: "center" })
   });
 });
 

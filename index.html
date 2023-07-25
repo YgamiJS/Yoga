@@ -21,6 +21,8 @@
       property="og:description"
       content="Сайт представляет собой расширенную визитную карточку преподавателя йоги. здесь можно найти всю необходимую информацию о ценах, времени и месте проведения йоги, можно познакомиться со стилем преподавания, принципами и взглядами учителя йоги. на сайте можно найти бесплатные материалы для домашней йоги, и инструменты для более тесного контакта с собой, такие как медитации и письменные практики. на сайте есть все необходимые контактные данные чтобы ближе познакомиться с преподавателем и связаться с ним напрямую."
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <meta property="og:image" content="/images/background.webp" />
     <meta property="og:image:alt" content="Йога" />
     <meta property="og:image:width" content="300" />
@@ -31,6 +33,13 @@
   </head>
   <body>
     <div class="wrapper">
+      <div class="goToTop">
+        <img
+          class="goToTop__img"
+          src="/images/up-arrow.svg"
+          alt="Перейти вверх"
+        />
+      </div>
       <div class="overlay">
         <div class="overlay__container container">
           <div class="overlay__burger burger">
@@ -94,12 +103,29 @@
         <div class="header__bottom">
           <div class="header__bottom-container container">
             <div class="header__bottom-text">
-              <h1 class="header__h1">get closer to yourself</h1>
-              <p class="header__p">
+              <h1
+                class="header__h1"
+                data-aos="fade-right"
+                data-aos-duraction="400"
+                data-aos-delay="250"
+              >
+                get closer to yourself
+              </h1>
+              <p
+                class="header__p"
+                data-aos="fade-right"
+                data-aos-duraction="450"
+                data-aos-delay="200"
+              >
                 You can always ask your body for what you need. you just need to
                 learn how to thank him for that
               </p>
-              <a class="header__link" href="#signForLesson"
+              <a
+                class="header__link"
+                href="#signForLesson"
+                data-aos="fade-right"
+                data-aos-duraction="500"
+                data-aos-delay="150"
                 >start doing yoga
               </a>
             </div>
@@ -112,7 +138,13 @@
             <img class="about__line" src="/images/line.svg" alt="Линия" />
             <div class="about__text">
               <h2 class="about__h2">ОБО МНЕ</h2>
-              <p class="about__p">
+              <p
+                class="about__p"
+                data-aos="fade-right"
+                data-aos-duraction="400"
+                data-aos-delay="300"
+                data-aos-once="true"
+              >
                 меня зовут Оля и я жадный исследователь себя. обожаю изучать
                 свое тело, мысли и ощущения. сейчас я преподаватель йоги. к
                 этому статусу я пришла сквозь долгие, на данный момент 5и летние
@@ -120,28 +152,52 @@
                 разумом.
               </p>
               <div class="images">
-                <div class="images__image images__image-first">
+                <div
+                  class="images__image images__image-first"
+                  data-aos="fade-up"
+                  data-aos-duraction="300"
+                  data-aos-delay="50"
+                  data-aos-once="true"
+                >
                   <img
                     class="images__img"
                     src="/images/yoga1.webp"
                     alt="Йога"
                   />
                 </div>
-                <div class="images__image images__image-second">
+                <div
+                  class="images__image images__image-second"
+                  data-aos="fade-up"
+                  data-aos-duraction="300"
+                  data-aos-delay="50"
+                  data-aos-once="true"
+                >
                   <img
                     class="images__img"
                     src="/images/yoga2.webp"
                     alt="Йога"
                   />
                 </div>
-                <div class="images__image images__image-third">
+                <div
+                  class="images__image images__image-third"
+                  data-aos="fade-up"
+                  data-aos-duraction="300"
+                  data-aos-delay="50"
+                  data-aos-once="true"
+                >
                   <img
                     class="images__img"
                     src="/images/yoga3.webp"
                     alt="Йога"
                   />
                 </div>
-                <div class="images__image images__image-fourth">
+                <div
+                  class="images__image images__image-fourth"
+                  data-aos="fade-up"
+                  data-aos-duraction="300"
+                  data-aos-delay="50"
+                  data-aos-once="true"
+                >
                   <img
                     class="images__img"
                     src="/images/yoga4.webp"
@@ -149,7 +205,13 @@
                   />
                 </div>
               </div>
-              <p class="about__p">
+              <p
+                class="about__p"
+                data-aos="fade-right"
+                data-aos-duraction="400"
+                data-aos-delay="300"
+                data-aos-once="true"
+              >
                 я полна информации об анатомии, биомеханики, физиологии
                 человеческого тела, полна информации о психологии, полна знаний
                 об осознанном, экологичном и здоровом образе жизни, мышления,
@@ -170,8 +232,16 @@
                 class="about-yoga__img"
                 src="/images/yoga5.webp"
                 alt="Йога"
+                data-aos="fade-up"
+                data-aos-duraction="300"
+                data-aos-delay="50"
               />
-              <div class="about-yoga__text-description">
+              <div
+                class="about-yoga__text-description"
+                data-aos="fade-up"
+                data-aos-duraction="300"
+                data-aos-delay="50"
+              >
                 <p class="about-yoga__p">
                   на своих занятиях я в первую очередь обучаю. обучаю культуре
                   тела, показываю и рассказываю как мы устроены с научной точки
@@ -929,15 +999,32 @@
               </div>
             </div>
             <div class="reviews__text">
-              <h3 class="reviews__h3">бесплатные продукты</h3>
-              <p class="reviews__p">
+              <h3
+                class="reviews__h3"
+                data-aos="fade-up"
+                data-aos-duraction="300"
+                data-aos-delay="50"
+              >
+                бесплатные продукты
+              </h3>
+              <p
+                class="reviews__p"
+                data-aos="fade-up"
+                data-aos-duraction="300"
+                data-aos-delay="50"
+              >
                 в любое удобное для вас время вы можете познакомиться со мной
                 через видео и аудио материалы. чтобы почувствовать откликается
                 ли вам мои методы преподавания, мой голос и энергия. так же
                 благодаря этим материалам вы сможете начать или продолжить
                 знакомство со своим телом и мыслями.
               </p>
-              <div class="reviews__links">
+              <div
+                class="reviews__links"
+                data-aos="fade-up"
+                data-aos-duraction="300"
+                data-aos-delay="50"
+              >
                 <a class="reviews__link" href="https://t.me/your_olia_marley"
                   >Перейти в телеграмм канал</a
                 >
@@ -1021,7 +1108,12 @@
           </div>
         </section>
         <section class="details" id="details">
-          <div class="details__container container">
+          <div
+            class="details__container container"
+            data-aos="fade-up"
+            data-aos-duraction="300"
+            data-aos-delay="50"
+          >
             <h2 class="details__h1">подробности о занятии в группе</h2>
             <div class="details__text">
               <div class="details__text-description">
@@ -1052,7 +1144,12 @@
           </div>
         </section>
         <section class="information">
-          <div class="information__container container">
+          <div
+            class="information__container container"
+            data-aos="fade-up"
+            data-aos-duraction="300"
+            data-aos-delay="50"
+          >
             <h2 class="information__h2">подробности об онлайн занятии</h2>
             <div class="information__text">
               <div class="information__text-description">
@@ -1075,7 +1172,12 @@
           </div>
         </section>
         <section class="individualSessions">
-          <div class="individualSessions__container container">
+          <div
+            class="individualSessions__container container"
+            data-aos="fade-up"
+            data-aos-duraction="300"
+            data-aos-delay="50"
+          >
             <h2 class="individualSessions__h2">
               подробности об индивидуальных занятиях
             </h2>
@@ -1222,8 +1324,20 @@
         </section>
         <section class="signForLesson" id="signForLesson">
           <div class="signForLesson__container container">
-            <h2 class="singForLesson__h2">записаться на занятие</h2>
-            <div class="signForLesson__description">
+            <h2
+              class="singForLesson__h2"
+              data-aos="fade-up"
+              data-aos-duraction="300"
+              data-aos-delay="50"
+            >
+              записаться на занятие
+            </h2>
+            <div
+              class="signForLesson__description"
+              data-aos="fade-up"
+              data-aos-duraction="300"
+              data-aos-delay="50"
+            >
               <div class="singForLesson__info">
                 <ul class="signForLesson-answers">
                   <li class="signForLesson-answers__answer">
@@ -1321,5 +1435,8 @@
       </footer>
     </div>
     <script type="module" src="./src/js/main.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

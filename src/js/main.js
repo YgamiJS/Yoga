@@ -1,5 +1,4 @@
 import schedule from "@/data/schedule.json";
-import "swiper/swiper-bundle.css";
 import "@/scss/index.scss";
 
 const overlay = document.querySelector(".overlay");
